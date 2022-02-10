@@ -28,4 +28,4 @@ jobs:
           make dev
       - name: run sysinfo
         run: |
-          cd src && python get_sysinfo_example.py
+          cd src && python get_sysinfo_example.py --max_tries=25
