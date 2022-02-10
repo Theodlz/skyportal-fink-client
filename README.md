@@ -14,7 +14,7 @@ pip install -r requirements-dev.txt
 
 ```bash
 make lint-install
-pre-commit install
+pre-commit install -c skyportal/.pre-commit-config.yaml 
 ```
 
 3. To get started, be sure to shut down postgres unless it's listening on a different port than SP/baselayer expects. On a mac:
@@ -37,7 +37,7 @@ Now, in the top-level client directory:
 make dev
 ```
 
-This will build docker containers with the pinned version of skyportal and write the initial admin token to `./.tokens.yaml`. 
+This will build docker containers with the pinned version of skyportal and write the initial admin token to `./.tokens.yaml`.
 
 If you want to get a terminal in the running docker container:
 
