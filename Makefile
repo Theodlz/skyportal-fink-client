@@ -23,6 +23,9 @@ skyportal/baselayer/Makefile:
 dev: docker-up
 	@python ./util/sp_tokens.py --container_name skyportal_web_1  --verbose=False
 
+dev-demo-data-load:
+	@docker exec skyportal_web_1 bash -c 'source /skyportal_env/bin/activate && FLAGS="--create_tables --config=config.yaml" make load_demo_data'
+
 dev-down: 
 	docker-compose --file=skyportal/docker-compose.yaml down
 

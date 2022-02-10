@@ -1,1 +1,3 @@
 fire
+pre-commit
+pyyaml
