@@ -1,0 +1,31 @@
+name: Dev Environment
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Test Dev Integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install flake8 pytest pytest-cov
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+      - name: Build Dev enviroment
+        run: |
+          make dev
+      - name: run sysinfo
+        run: |
+          cd src && python get_sysinfo_example.py --max_tries=25
